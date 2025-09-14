@@ -1,99 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Davinder Singh | Hybrid Mobile App Developer Portfolio</title>
+	<title>Davinder Singh | Web & Mobile App Developer Portfolio</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
-
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="css/magnific-popup.css">
-
 	<link rel="stylesheet" href="css/aos.css">
-
 	<link rel="stylesheet" href="css/ionicons.min.css">
-
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
 
 	<style>
-		/*================== ABOUT ==================*/
-        .about-mf .box-shadow-full {
-          padding-top: 4rem;
-          padding-bottom: 4rem;
+		:root {
+            --primary-color: #ffbd39;
+            --secondary-color: #ffa500;
+            --bg-dark: #0f2027;
+            --bg-dark-secondary: #203a43;
+            --text-dark: #e0e0e0;
+            --text-muted: #a0a0a0;
         }
-
-        .about-mf .about-img {
-          margin-bottom: 2rem;
+        body {
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-secondary));
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
         }
-
-        .about-mf .about-img img {
-          margin-left: 10px;
+        .navbar {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
-        .skill-mf .progress {
-          margin: .5rem 0 1.2rem 0;
-          border-radius: 0;
-          height: .7rem;
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color) !important;
         }
-
-        .skill-mf .progress .progress-bar {
-          height: .7rem;
-          background-color: #ffbd39;
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s;
         }
-
-        /* Typing Animation */
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: url('images/stars.png') repeat;
+            animation: stars 60s linear infinite;
+        }
+        @keyframes stars {
+            from { background-position: 0 0; }
+            to { background-position: 1200px 1200px; }
+        }
+        .hero .overlay {
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
         #typing-animation {
-          font-size: 30px;
-          font-weight: bold;
-          color: #fff;
-          overflow: hidden;
-          white-space: nowrap;
-          animation: typing 3s steps(20, end) infinite;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid var(--primary-color);
+            animation: blink 0.7s step-end infinite;
         }
-
-        @keyframes typing {
-          from { width: 0; }
-          to { width: 100%; }
+        @keyframes blink {
+            50% { border-color: transparent; }
         }
-
-        /* Image Hover Zoom */
+        .card-flip {
+            perspective: 1200px;
+            height: 450px;
+            margin-bottom: 20px;
+        }
+        .card-flip-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            height: 100%;
+        }
+        .card-flip:hover .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            background: var(--primary-color);
+            color: #000;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .skill-mf .progress {
+            margin: 0.6rem 0;
+            height: 0.8rem;
+            border-radius: 6px;
+            background: #333;
+        }
+        .skill-mf .progress-bar {
+            height: 0.8rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
         .zoom-effect {
-          overflow: hidden;
-          transition: transform 0.3s ease-out;
+            overflow: hidden;
+            transition: transform 0.4s ease-out;
         }
-
         .zoom-effect:hover {
-          transform: scale(1.1);
+            transform: scale(1.15);
         }
-
-        .one-third {
-          background-size: 170%;
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 120px;
+            height: 4px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        .section-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            margin: 15px 0;
+            width: 48%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 52%;
+            text-align: left;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 2px solid var(--bg-dark);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(odd)::before {
+            right: -12px;
+        }
+        .timeline-item:nth-child(even)::before {
+            left: -12px;
+        }
+        .blog-entry {
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .blog-entry:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .contact-form input, .contact-form textarea {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        .social-icons a {
+            margin: 0 15px;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            transition: color 0.3s, transform 0.2s;
+        }
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        .ftco-section {
+            padding: 4rem 0;
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 40px;
+            }
+            .timeline-item::before {
+                left: 8px !important;
+            }
         }
 	</style>
 </head>
-
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="index.html">Davinder Singh</a>
-		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav">
+		<a class="navbar-brand" href="#home-section">Davinder Singh</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
 			<span class="oi oi-menu"></span> Menu
 		</button>
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav nav ml-auto">
 				<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
 				<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-				<li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-				<li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
+				<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
+				<li class="nav-item"><a href="#experience-section" class="nav-link"><span>Experience</span></a></li>
+				<li class="nav-item"><a href="#education-section" class="nav-link"><span>Education</span></a></li>
+				<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
+				<li class="nav-item"><a href="#portfolio-section" class="nav-link"><span>Portfolio</span></a></li>
+				<li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
+				<li class="nav-item"><a href="#blog-section" class="nav-link"><span>Blog</span></a></li>
+				<li class="nav-item"><a href="#testimonials-section" class="nav-link"><span>Testimonials</span></a></li>
 				<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
 			</ul>
 		</div>
@@ -102,210 +307,560 @@
 
 <!-- Hero Section -->
 <section id="home-section" class="hero">
-	<div class="home-slider owl-carousel">
-		<div class="slider-item">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end">
-					<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/flutter_dev.png);">
-						<div class="overlay"></div>
-					</div>
-					<div class="one-forth d-flex align-items-center ftco-animate">
-						<div class="text">
-							<span class="subheading">Hello!!!</span>
-							<h1 class="mb-4 mt-3">I'm <span>Davinder<br>Singh</span></h1>
-							<span id="typing-animation"></span>
-							<script>
-								const typingAnimationElement = document.getElementById('typing-animation');
-                                const typingTexts = [
-                                  'Flutter Developer ',
-                                  'Full Stack Engineer ',
-                                  'Firebase & Supabase Expert ',
-                                  'SDK Developer '
-                                ];
-                                function playTypingAnimation(text) {
-                                  for (let i = 0; i < text.length; i++) {
-                                    setTimeout(() => {
-                                      typingAnimationElement.textContent += text[i];
-                                    }, i * 150);
-                                  }
-                                  setTimeout(() => {
-                                    typingAnimationElement.textContent = '';
-                                    playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-                                  }, text.length * 150);
-                                }
-                                playTypingAnimation(typingTexts[0]);
-							</script>
-							<br><br>
-							<h2>Flutter Developer | 3+ Years Experience</h2>
-							<p>
-								<a href="https://pub.dev" class="btn btn-primary py-3 px-4">Pub.dev SDKs</a>
-								<a href="https://npmjs.com" class="btn btn-white btn-outline-white py-3 px-4">NPM SDKs</a>
-							</p>
-						</div>
-					</div>
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row d-md-flex no-gutters slider-text align-items-center">
+			<div class="col-12">
+				<div class="video-container" style="border-radius: 12px; overflow: hidden; height: 90vh;">
+					<iframe
+							width="100%"
+							height="100%"
+							src="https://www.youtube.com/embed/fq4N0hgOWzU?autoplay=1&mute=1&loop=1&playlist=fq4N0hgOWzU"
+							title="Google Flutter Development"
+							frameborder="0"
+							allow="autoplay; encrypted-media; picture-in-picture"
+							allowfullscreen
+							style="object-fit: cover;">
+					</iframe>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 
 <!-- About Section -->
-<section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+<section class="ftco-section" id="about-section">
 	<div class="container">
-		<div class="row d-flex align-items-stretch">
-			<div class="col-md-6 col-lg-5 d-flex">
-				<div class="img-about img d-flex align-items-stretch">
-					<div class="overlay">
-						<div class="row">
-							<div class="col-sm-6 col-md-5">
-								<div class="about-img">
-									<img src="images/aaa.png" class="img-fluid rounded b-shadow-a" alt="">
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-7">
-								<div class="about-info">
-									<p><span class="title-s">Name: </span> <span>Davinder Singh</span></p>
-									<p><span class="title-s">Role: </span> <span>Flutter Developer</span></p>
-									<p><span class="title-s">Experience: </span> <span>3+ Years</span></p>
-									<p><span class="title-s">Location: </span> <span>Chandigarh, India</span></p>
-								</div>
-							</div>
-						</div>
-						<div class="skill-mf">
-							<p class="title-s">Skills</p>
-							<span>Flutter</span> <span class="pull-right">95%</span>
-							<div class="progress"><div class="progress-bar" style="width:95%"></div></div>
-							<span>Dart</span> <span class="pull-right">90%</span>
-							<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
-							<span>Firebase</span> <span class="pull-right">90%</span>
-							<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
-							<span>Supabase</span> <span class="pull-right">85%</span>
-							<div class="progress"><div class="progress-bar" style="width:85%"></div></div>
-							<span>Android SDK</span> <span class="pull-right">90%</span>
-							<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
-							<span>iOS (Xcode, TestFlight)</span> <span class="pull-right">85%</span>
-							<div class="progress"><div class="progress-bar" style="width:85%"></div></div>
-							<span>JavaScript / Node.js</span> <span class="pull-right">80%</span>
-							<div class="progress"><div class="progress-bar" style="width:80%"></div></div>
-						</div>
+		<h1 class="section-title">About</h1>
+		<h2 class="section-subtitle">Who I Am</h2>
+		<div class="row align-items-stretch">
+			<div class="col-md-6">
+				<div class="img-about zoom-effect">
+					<img src="images/aaa.png" class="img-fluid rounded" alt="Davinder Singh">
+					<div class="about-info text-center mt-3">
+						<p><span class="title-s">Name:</span> Davinder Singh</p>
+						<p><span class="title-s">Role:</span> Senior Mobile/Web App Developer</p>
+						<p><span class="title-s">Experience:</span> 4+ Years</p>
+						<p><span class="title-s">Location:</span> India</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-				<h1 class="big">About</h1>
-				<h2 class="mb-4">About Me</h2>
-				<p>
-					I’m a Flutter Developer with 3+ years of experience building scalable mobile apps for both Android and iOS. Skilled in Firebase, Supabase, API integrations, and SDK development (published on pub.dev and npm).
-					Experienced with deployment on App Store (TestFlight) and Play Store, with multiple live apps. I enjoy building impactful, user-friendly applications.
-				</p>
-				<ul class="about-info mt-4">
-					<li><span>Profile:</span> <span>Flutter / Full-Stack Mobile Developer</span></li>
-					<li><span>Languages:</span> <span>Dart, JavaScript, Kotlin, Swift (basics)</span></li>
-					<li><span>Frameworks:</span> <span>Flutter, React Native</span></li>
-					<li><span>Tools:</span> <span>Xcode, Android Studio, Firebase, Supabase</span></li>
-					<li><span>Other:</span> <span>SDK Development, REST APIs, GitHub CI/CD</span></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Resume -->
-<section class="ftco-section" id="resume-section">
-	<div class="container">
-		<div class="text-center">
-			<h1 class="big">Resume</h1>
-			<h2>Experience</h2>
-		</div>
-		<div class="row">
-			<div class="col-md-6 resume-wrap">
-				<span class="date">2022 - Present</span>
-				<h2>Flutter Developer</h2>
-				<span class="position">Freelance & Client Projects</span>
+			<div class="col-md-6">
+				<p>I'm <b>Davinder Singh</b>, a passionate developer with over 4 years of experience building innovative, scalable, and user-centric applications. My journey began with a fascination for creating seamless digital experiences, leading me to specialize in mobile and web development.</p>
+				<p>From MVPs to enterprise-grade solutions, I deliver clean code, robust architectures, and delightful user experiences. My expertise spans cross-platform and native app development, backend engineering, and custom SDK creation, with a focus on performance and scalability.</p>
+				<h3>What I Offer:</h3>
 				<ul>
-					<li>Developed multiple cross-platform apps with Flutter deployed to Play Store & App Store.</li>
-					<li>Integrated Firebase (Auth, Firestore, Cloud Functions, Push Notifications).</li>
-					<li>Implemented Supabase backend for real-time applications.</li>
-					<li>Published SDKs/libraries on <b>pub.dev</b> and <b>NPM</b>.</li>
-					<li>Handled iOS builds, provisioning, TestFlight distribution, and release pipelines.</li>
+					<li>Cross-platform apps (Flutter, React Native)</li>
+					<li>Native iOS (Swift) & Android (Kotlin, Java)</li>
+					<li>Real-time features (chat, notifications)</li>
+					<li>API integrations (REST, GraphQL)</li>
+					<li>Custom SDKs for seamless integrations</li>
+					<li>App Store/Play Store deployment & CI/CD</li>
+					<li>Performance optimization & scalable architecture</li>
 				</ul>
-			</div>
-			<div class="col-md-6 resume-wrap">
-				<span class="date">2020 - 2022</span>
-				<h2>Android Developer</h2>
-				<span class="position">Startup / Client Work</span>
+				<h3>Industry Expertise:</h3>
 				<ul>
-					<li>Worked with Android SDK, Java/Kotlin for native app development.</li>
-					<li>Integrated APIs, payment gateways, and third-party SDKs.</li>
-					<li>Optimized UI/UX and ensured smooth Play Store deployments.</li>
+					<li>IoT & Smart Hardware</li>
+					<li>Web3 & Blockchain</li>
+					<li>Real-Time Communication</li>
+					<li>E-commerce & Loyalty Systems</li>
+					<li>Ride-Hailing & Delivery</li>
+					<li>Social Media & Community Platforms</li>
+					<li>FinTech & Payment Solutions</li>
 				</ul>
-			</div>
-		</div>
-		<div class="row justify-content-center mt-5">
-			<div class="col-md-6 text-center">
-				<p><a href="Davinder_Singh_Flutter_Resume.pdf" download class="btn btn-primary py-3 px-5">Download CV</a></p>
+				<p><b>Ready to transform your vision into reality?</b> Let’s connect and build something extraordinary!</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Projects -->
-<section class="ftco-section" id="project-section">
-	<div class="container">
-		<div class="text-center">
-			<h1 class="big">Projects</h1>
-			<h2>Live Apps & SDKs</h2>
-			<p>Some published apps & libraries on Play Store, App Store, pub.dev, and npm.</p>
-		</div>
-		<div class="row d-flex">
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry">
-					<a href="#" class="block-20 zoom-effect" style="background-image:url(images/app1.png);"></a>
-					<div class="text mt-3">
-						<h3 class="heading"><a href="#">E-Commerce Flutter App</a></h3>
-						<p>Full-featured mobile commerce app live on Play Store & App Store.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry">
-					<a href="#" class="block-20 zoom-effect" style="background-image:url(images/sdk.png);"></a>
-					<div class="text mt-3">
-						<h3 class="heading"><a href="#">Custom Flutter SDK</a></h3>
-						<p>Published SDK on pub.dev for Flutter developers.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry">
-					<a href="#" class="block-20 zoom-effect" style="background-image:url(images/supabase.png);"></a>
-					<div class="text mt-3">
-						<h3 class="heading"><a href="#">Supabase Chat App</a></h3>
-						<p>Real-time chat application built with Flutter & Supabase backend.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Contact -->
-<section class="ftco-section contact-section" id="contact-section">
+<!-- Skills Section -->
+<section class="ftco-section" id="skills-section">
 	<div class="container text-center">
-		<h1 class="big">Contact</h1>
-		<h2>Get in Touch</h2>
-		<p>Email: <a href="mailto:davindersingh00743@gmail.com">davindersingh00743@gmail.com</a></p>
-		<p>Phone: <a href="tel:+917888821587">+91 7888821587</a></p>
-		<div>
-			<a href="https://github.com/DavinderSingh-ds" class="btn btn-primary px-4">GitHub</a>
-			<a href="https://www.linkedin.com/in/davinder-singh" class="btn btn-outline-primary px-4">LinkedIn</a>
+		<h1 class="section-title">Skills</h1>
+		<h2 class="section-subtitle">Technical Expertise</h2>
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="skill-mf">
+					<span>Flutter / React Native</span> <span class="pull-right">95%</span>
+					<div class="progress"><div class="progress-bar" style="width:95%"></div></div>
+					<span>iOS (Swift) / Android (Kotlin, Java)</span> <span class="pull-right">90%</span>
+					<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+					<span>Firebase / Supabase</span> <span class="pull-right">90%</span>
+					<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+					<span>React.js / Next.js</span> <span class="pull-right">85%</span>
+					<div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+					<span>Node.js / Express.js</span> <span class="pull-right">80%</span>
+					<div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+					<span>GraphQL / REST APIs</span> <span class="pull-right">85%</span>
+					<div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+					<span>CI/CD & DevOps</span> <span class="pull-right">75%</span>
+					<div class="progress"><div class="progress-bar" style="width:75%"></div></div>
+					<span>UI/UX Design (Figma, Adobe XD)</span> <span class="pull-right">70%</span>
+					<div class="progress"><div class="progress-bar" style="width:70%"></div></div>
+					<span>Blockchain (Ethereum, Solidity)</span> <span class="pull-right">65%</span>
+					<div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+				</div>
+				<p>Mastered through real-world projects, these skills enable me to deliver robust, scalable, and user-friendly solutions tailored to your needs.</p>
+			</div>
 		</div>
 	</div>
 </section>
 
+<!-- Experience Section -->
+<section class="ftco-section" id="experience-section">
+	<div class="container text-center">
+		<h1 class="section-title">Experience</h1>
+		<h2 class="section-subtitle">Professional Journey</h2>
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="timeline">
+					<div class="timeline-item">
+						<div class="content">
+							<span class="date">2022 - Present</span>
+							<h2>Flutter / React Native App Developer</h2>
+							<p><em>Freelance & Client Projects, Global</em></p>
+							<ul class="text-left">
+								<li>Developed and launched 12+ cross-platform apps using Flutter and React Native, with 500,000+ downloads combined.</li>
+								<li>Published SDKs on <b>pub.dev</b> and <b>npm</b>, adopted by 7,000+ developers globally.</li>
+								<li>Integrated Firebase & Supabase for authentication, real-time databases, and cloud functions.</li>
+								<li>Optimized high-traffic apps, achieving 40% faster load times and 30% better memory usage.</li>
+								<li>Managed CI/CD pipelines and TestFlight/APK distributions for seamless QA and releases.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="content">
+							<span class="date">2020 - 2022</span>
+							<h2>Junior Mobile Developer</h2>
+							<p><em>Tech Startup, India</em></p>
+							<ul class="text-left">
+								<li>Built 5+ native Android (Java) and iOS (Swift) apps for e-commerce and IoT sectors.</li>
+								<li>Integrated payment gateways (Stripe, Razorpay) and social logins (Google, Facebook).</li>
+								<li>Contributed to open-source projects, earning 600+ GitHub stars and 20+ merged PRs.</li>
+								<li>Collaborated with cross-functional teams to deliver apps under tight deadlines.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="content">
+							<span class="date">2019 - 2020</span>
+							<h2>Intern, Software Development</h2>
+							<p><em>Tech Firm, India</em></p>
+							<ul class="text-left">
+								<li>Developed prototype apps using Flutter for internal hackathons.</li>
+								<li>Assisted in building RESTful APIs with Node.js and Express.js.</li>
+								<li>Learned Agile methodologies and version control with Git.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<p class="mt-3">
+					<a href="Davinder_Singh_Resume_2025_Updated.pdf" download class="btn btn-primary">Download Full Resume</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Education Section -->
+<section class="ftco-section" id="education-section">
+	<div class="container text-center">
+		<h1 class="section-title">Education</h1>
+		<h2 class="section-subtitle">Academic Background</h2>
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="timeline">
+					<div class="timeline-item">
+						<div class="content">
+							<span class="date">2019 - 2023</span>
+							<h2>Bachelor's of Technology in Computer Science</h2>
+							<p><em>Rayat Bahra University, India</em></p>
+							<ul class="text-left">
+								<li>Specialized in software engineering, algorithms, and mobile development.</li>
+								<li>Graduated with honors, GPA 8.72</li>
+								<li>Won 3 hackathons with innovative app prototypes, including a smart home controller.</li>
+								<li>Published a research paper on mobile app performance optimization.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="content">
+							<span class="date">2021 - 2022</span>
+							<h2>Professional Certifications</h2>
+							<ul class="text-left">
+								<li>Google Flutter Certification</li>
+								<li>AWS Certified Developer – Associate</li>
+								<li>Firebase Specialist Certification</li>
+								<li>Blockchain Fundamentals (Coursera)</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Projects Section -->
+<section class="ftco-section" id="projects-section">
+	<div class="container text-center">
+		<h1 class="section-title">Projects</h1>
+		<h2 class="section-subtitle">Live Apps & SDKs</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<a href="https://play.google.com/store/apps/details?id=com.vwave.app.vwave" class="block-20 zoom-effect" style="background-image:url(images/vwave.png);"></a>
+							<div class="text"><h3><a href="https://apps.apple.com/in/app/vwave-app/id6670310777">VWave App</a></h3><p>Social community platform.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>VWave App</h3>
+							<p>A feature-rich social platform with real-time chat, event management, and user profiles. Built with Flutter and Firebase, optimized for 100,000+ users across Android and iOS.</p>
+							<a href="https://apps.apple.com/in/app/vwave-app/id6670310777" class="btn btn-primary">View App</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<a href="https://apps.apple.com/in/app/playerconnectr/id6514297567" class="block-20 zoom-effect" style="background-image:url(images/playerconnectr.png);"></a>
+							<div class="text"><h3><a href="https://apps.apple.com/in/app/playerconnectr/id6514297567">Player Connectr</a></h3><p>Sports networking app.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>Player Connectr</h3>
+							<p>Connects athletes and coaches with real-time updates, profile management, and messaging. Developed using React Native and Supabase for scalability.</p>
+							<a href="https://apps.apple.com/in/app/playerconnectr/id6514297567" class="btn btn-primary">View App</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<a href="https://play.google.com/store/apps/details?id=com.quick.quickmro" class="block-20 zoom-effect" style="background-image:url(images/quickmro.png);"></a>
+							<div class="text"><h3><a href="https://play.google.com/store/apps/details?id=com.quick.quickmro">QuickMRO</a></h3><p>Enterprise MRO app.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>QuickMRO</h3>
+							<p>An enterprise-grade app for maintenance, repair, and operations with real-time inventory tracking. Built with Flutter and a Node.js backend.</p>
+							<a href="https://play.google.com/store/apps/details?id=com.quick.quickmro" class="btn btn-primary">View App</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<a href="https://pub.dev/packages/easymerchantsdk" class="block-20 zoom-effect" style="background-image:url(images/pubdev.png);"></a>
+							<div class="text"><h3><a href="https://pub.dev/packages/easymerchantsdk">EasyMerchant SDK</a></h3><p>Flutter SDK on pub.dev.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>EasyMerchant SDK</h3>
+							<p>A Flutter SDK for merchant integrations, offering payment processing and analytics. Published on pub.dev with 12,000+ downloads.</p>
+							<a href="https://pub.dev/packages/easymerchantsdk" class="btn btn-primary">View SDK</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<a href="https://www.npmjs.com/package/@jimrising/easymerchantsdk-react-native" class="block-20 zoom-effect" style="background-image:url(images/npm.png);"></a>
+							<div class="text"><h3><a href="https://www.npmjs.com/package/@jimrising/easymerchantsdk-react-native">EasyMerchant SDK</a></h3><p>React Native SDK on npm.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>EasyMerchant SDK</h3>
+							<p>A React Native SDK for merchant services, enabling seamless payment and authentication integrations. Available on npm with 8,000+ downloads.</p>
+							<a href="https://www.npmjs.com/package/@jimrising/easymerchantsdk-react-native" class="btn btn-primary">View SDK</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/food_delivery.png);"></div>
+							<div class="text"><h3>FoodRush App</h3><p>Food delivery platform.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>FoodRush App</h3>
+							<p>A food delivery app with real-time order tracking, payment integration, and restaurant management. Built with Flutter and Firebase.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="ftco-section" id="portfolio-section">
+	<div class="container text-center">
+		<h1 class="section-title">Portfolio</h1>
+		<h2 class="section-subtitle">Highlighted Works</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/crypto_wallet.png);"></div>
+							<div class="text"><h3>Crypto Wallet App</h3><p>Secure Web3 wallet with NFT support.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>Crypto Wallet App</h3>
+							<p>A secure mobile app for managing cryptocurrencies and NFTs, integrated with Ethereum blockchain APIs and secured with biometric authentication. Built with Flutter.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/iot_app.png);"></div>
+							<div class="text"><h3>IoT Smart Home App</h3><p>Smart device control app.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>IoT Smart Home App</h3>
+							<p>An app for controlling IoT devices with real-time data syncing via MQTT and Firebase. Built with React Native for cross-platform compatibility.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/social_media.png);"></div>
+							<div class="text"><h3>ConnectSphere</h3><p>Social media platform.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>ConnectSphere</h3>
+							<p>A social media app with dynamic feeds, real-time chat, and push notifications. Developed using React Native and Node.js with WebSocket integration.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Services Section -->
+<section class="ftco-section" id="services-section">
+	<div class="container text-center">
+		<h1 class="section-title">Services</h1>
+		<h2 class="section-subtitle">What I Offer</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-mobile-alt fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>Mobile App Development</h3>
+						<p>Build high-performance cross-platform and native apps using Flutter, React Native, Swift, and Kotlin.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-laptop-code fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>Web Development</h3>
+						<p>Create responsive and scalable web applications with React.js, Next.js, and Node.js.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-cogs fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>SDK Development</h3>
+						<p>Design and publish custom SDKs for seamless third-party integrations on pub.dev and npm.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-server fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>Backend Development</h3>
+						<p>Develop robust APIs and server-side logic with Node.js, Express.js, and Firebase/Supabase.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-paint-brush fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>UI/UX Design</h3>
+						<p>Craft intuitive and visually appealing interfaces using Figma, Adobe XD, and Tailwind CSS.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-lightbulb fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>Consulting & Optimization</h3>
+						<p>Provide expert advice on app architecture, performance optimization, and CI/CD pipelines.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Blog Section -->
+<section class="ftco-section" id="blog-section">
+	<div class="container text-center">
+		<h1 class="section-title">Blog</h1>
+		<h2 class="section-subtitle">Tech Insights & Tutorials</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="block-20 zoom-effect" style="background-image:url(images/flutter_blog.png);"></div>
+					<div class="text">
+						<h3>Building Scalable Flutter Apps</h3>
+						<p>Explore best practices for structuring Flutter apps for scalability, modularity, and maintainability.</p>
+						<a href="#" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="block-20 zoom-effect" style="background-image:url(images/firebase_vs_supabase.png);"></div>
+					<div class="text">
+						<h3>Firebase vs. Supabase: A Deep Dive</h3>
+						<p>Compare Firebase and Supabase to choose the best backend-as-a-service for your next project.</p>
+						<a href="#" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="block-20 zoom-effect" style="background-image:url(images/react_native_perf.png);"></div>
+					<div class="text">
+						<h3>Optimizing React Native Performance</h3>
+						<p>Tips and techniques to boost your React Native app’s speed and efficiency.</p>
+						<a href="#" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="block-20 zoom-effect" style="background-image:url(images/blockchain_dev.png);"></div>
+					<div class="text">
+						<h3>Getting Started with Web3 Development</h3>
+						<p>A beginner’s guide to building decentralized apps with Ethereum and Solidity.</p>
+						<a href="#" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="ftco-section" id="testimonials-section">
+	<div class="container text-center">
+		<h1 class="section-title">Testimonials</h1>
+		<h2 class="section-subtitle">What Clients Say</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<p>"Davinder’s expertise in Flutter and Firebase transformed our startup’s app into a market leader. His attention to detail is unmatched!"</p>
+						<p><em>- John Doe, CEO, TechStartup</em></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<p>"The SDK Davinder built for us saved months of development time and integrated perfectly with our platform."</p>
+						<p><em>- Jane Smith, CTO, InnovateCo</em></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<p>"Davinder optimized our app’s performance, making it lightning-fast. He’s a true professional!"</p>
+						<p><em>- Alex Brown, Product Manager, GrowEasy</em></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<p>"His ability to deliver a complex Web3 app under tight deadlines was impressive. Highly recommend!"</p>
+						<p><em>- Sarah Lee, Founder, CryptoVentures</em></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Contact Section -->
+<section class="ftco-section" id="contact-section">
+	<div class="container text-center">
+		<h1 class="section-title">Contact</h1>
+		<h2 class="section-subtitle">Get in Touch</h2>
+		<div class="row justify-content-center">
+			<div class="col-md-5">
+				<form class="contact-form">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Your Name" required>
+					</div>
+					<div class="form-group">
+						<input type="email" class="form-control" placeholder="Your Email" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Subject" required>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" rows="6" placeholder="Your Message" required></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Send Message</button>
+				</form>
+			</div>
+			<div class="col-md-5">
+				<p><i class="fas fa-envelope mr-2"></i> <a href="mailto:davindersingh00743@gmail.com">davindersingh00743@gmail.com</a></p>
+				<p><i class="fas fa-phone mr-2"></i> <a href="tel:+917888821587">+91 7888821587</a></p>
+				<p><i class="fas fa-map-marker-alt mr-2"></i> India</p>
+				<div class="social-icons mt-3">
+					<a href="https://github.com/DavinderSingh-ds"><i class="fab fa-github"></i></a>
+					<a href="https://www.upwork.com/freelancers/~01d9dc766150f0ad85"><i class="fab fa-upwork"></i></a>
+					<a href="https://www.linkedin.com/in/davinder-singh-3a90802a0/"><i class="fab fa-linkedin"></i></a>
+					<a href="https://www.instagram.com/ii.davinder.singh.ii/"><i class="fab fa-instagram"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Footer -->
 <footer class="ftco-footer text-center">
-	<p>&copy;<script>document.write(new Date().getFullYear());</script> Davinder Singh | Flutter Developer</p>
+	<p>&copy; 2025 Davinder Singh | Mobile & Web App Developer | All Rights Reserved</p>
+	<div class="social-icons">
+		<a href="https://github.com/DavinderSingh-ds"><i class="fab fa-github"></i></a>
+		<a href="https://www.upwork.com/freelancers/~01d9dc766150f0ad85"><i class="fab fa-upwork"></i></a>
+		<a href="https://www.linkedin.com/in/davinder-singh-3a90802a0/"><i class="fab fa-linkedin"></i></a>
+		<a href="https://www.instagram.com/ii.davinder.singh.ii/"><i class="fab fa-instagram"></i></a>
+	</div>
 </footer>
 
 <script src="js/jquery.min.js"></script>
@@ -313,6 +868,5 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 </html>
