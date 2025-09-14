@@ -26,6 +26,13 @@
             --bg-dark-secondary: #203a43;
             --text-dark: #e0e0e0;
             --text-muted: #a0a0a0;
+			--bg-light: #ffffff;
+			--bg-light-secondary: #f8f9fa;
+			--text-light: #333333;
+			--text-muted-light: #666666;
+			--card-bg-light: #ffffff;
+			--card-shadow-light: rgba(0,0,0,0.1);
+			--progress-bg-light: #e0e0e0;
         }
         body {
             background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-secondary));
@@ -34,7 +41,61 @@
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
+			transition: background 0.3s, color 0.3s;
         }
+		body.light-theme {
+			background: linear-gradient(135deg, var(--bg-light), var(--bg-light-secondary));
+			color: var(--text-light);
+			--bg-dark: var(--bg-light);
+			--bg-dark-secondary: var(--bg-light-secondary);
+			--text-dark: var(--text-light);
+			--text-muted: var(--text-muted-light);
+		}
+		body.light-theme .navbar {
+			background: rgba(255,255,255,0.9);
+			box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		}
+		body.light-theme .nav-link {
+			color: var(--text-light) !important;
+		}
+		body.light-theme .nav-link:hover {
+			color: var(--primary-color) !important;
+		}
+		body.light-theme .hero .overlay {
+			background: rgba(255,255,255,0.3);
+		}
+		body.light-theme .card-back {
+			background: var(--primary-color);
+			color: #000;
+		}
+		body.light-theme .skill-mf .progress {
+			background: var(--progress-bg-light);
+		}
+		body.light-theme .timeline::before {
+			background: var(--primary-color);
+		}
+		body.light-theme .timeline-item {
+			background: var(--card-bg-light);
+			box-shadow: 0 4px 8px var(--card-shadow-light);
+		}
+		body.light-theme .blog-entry {
+			background: var(--card-bg-light);
+			box-shadow: 0 4px 8px var(--card-shadow-light);
+		}
+		body.light-theme .contact-form input, body.light-theme .contact-form textarea {
+			background: rgba(0,0,0,0.05);
+			color: var(--text-light);
+		}
+		body.light-theme .social-icons a {
+			color: var(--text-light);
+		}
+		body.light-theme .social-icons a:hover {
+			color: var(--primary-color);
+		}
+		body.light-theme .ftco-footer {
+			background: var(--bg-light-secondary);
+			color: var(--text-light);
+		}
         .navbar {
             background: rgba(0,0,0,0.8);
             backdrop-filter: blur(12px);
@@ -42,6 +103,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+			transition: background 0.3s, box-shadow 0.3s;
         }
         .navbar-brand {
             font-size: 2rem;
@@ -57,6 +119,20 @@
             color: var(--primary-color) !important;
             transform: translateY(-2px);
         }
+		#theme-toggle {
+			background: transparent;
+			border: none;
+			color: var(--text-dark);
+			font-size: 1.5rem;
+			cursor: pointer;
+			transition: color 0.3s;
+		}
+		#theme-toggle:hover {
+			color: var(--primary-color);
+		}
+		body.light-theme #theme-toggle {
+			color: var(--text-light);
+		}
         .hero {
             position: relative;
             min-height: 100vh;
@@ -78,6 +154,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+			transition: background 0.3s;
         }
         #typing-animation {
             font-size: 2.5rem;
@@ -128,6 +205,7 @@
             height: 0.8rem;
             border-radius: 6px;
             background: #333;
+			transition: background 0.3s;
         }
         .skill-mf .progress-bar {
             height: 0.8rem;
@@ -161,6 +239,7 @@
             font-size: 1.8rem;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+			transition: color 0.3s;
         }
         .timeline {
             position: relative;
@@ -183,7 +262,7 @@
             padding: 15px;
             background: rgba(255,255,255,0.1);
             border-radius: 8px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
         .timeline-item:hover {
             transform: translateY(-5px);
@@ -206,7 +285,11 @@
             border-radius: 50%;
             border: 2px solid var(--bg-dark);
             z-index: 1;
+			transition: border 0.3s;
         }
+		body.light-theme .timeline-item::before {
+			border: 2px solid var(--bg-light);
+		}
         .timeline-item:nth-child(odd)::before {
             right: -12px;
         }
@@ -217,7 +300,7 @@
             background: rgba(255,255,255,0.15);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
         }
         .blog-entry:hover {
             transform: translateY(-8px);
@@ -232,6 +315,7 @@
             margin-bottom: 15px;
             width: 100%;
             box-sizing: border-box;
+			transition: background 0.3s, color 0.3s;
         }
         .contact-form input:focus, .contact-form textarea:focus {
             outline: none;
@@ -262,6 +346,12 @@
         .ftco-section {
             padding: 4rem 0;
         }
+		.ftco-footer {
+			background: var(--bg-dark-secondary);
+			padding: 2rem 0;
+			color: var(--text-dark);
+			transition: background 0.3s, color 0.3s;
+		}
         @media (max-width: 768px) {
             .timeline::before {
                 left: 20px;
@@ -298,8 +388,10 @@
 				<li class="nav-item"><a href="#portfolio-section" class="nav-link"><span>Portfolio</span></a></li>
 				<li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
 				<li class="nav-item"><a href="#blog-section" class="nav-link"><span>Blog</span></a></li>
-				<li class="nav-item"><a href="#testimonials-section" class="nav-link"><span>Testimonials</span></a></li>
 				<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+				<li class="nav-item">
+					<button id="theme-toggle"><i class="fas fa-moon"></i></button>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -368,6 +460,7 @@
 					<li>Ride-Hailing & Delivery</li>
 					<li>Social Media & Community Platforms</li>
 					<li>FinTech & Payment Solutions</li>
+					<li>AI & Machine Learning Integrations</li>
 				</ul>
 				<p><b>Ready to transform your vision into reality?</b> Let’s connect and build something extraordinary!</p>
 			</div>
@@ -401,8 +494,20 @@
 					<div class="progress"><div class="progress-bar" style="width:70%"></div></div>
 					<span>Blockchain (Ethereum, Solidity)</span> <span class="pull-right">65%</span>
 					<div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+					<span>Machine Learning (TensorFlow, PyTorch)</span> <span class="pull-right">60%</span>
+					<div class="progress"><div class="progress-bar" style="width:60%"></div></div>
 				</div>
-				<p>Mastered through real-world projects, these skills enable me to deliver robust, scalable, and user-friendly solutions tailored to your needs.</p>
+				<p>Mastered through real-world projects, these skills enable me to deliver robust, scalable, and user-friendly solutions tailored to your needs. I've integrated AI tools like TensorFlow for image recognition in mobile apps and PyTorch for predictive analytics.</p>
+				<div class="row mt-4">
+					<div class="col-md-6">
+						<img src="images/ai_tools.png" class="img-fluid rounded" alt="AI Tools Integration" style="max-height: 300px;">
+					</div>
+					<div class="col-md-6">
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3viCdGIoRak" allowfullscreen title="AI in Mobile App Development"></iframe>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -427,6 +532,7 @@
 								<li>Integrated Firebase & Supabase for authentication, real-time databases, and cloud functions.</li>
 								<li>Optimized high-traffic apps, achieving 40% faster load times and 30% better memory usage.</li>
 								<li>Managed CI/CD pipelines and TestFlight/APK distributions for seamless QA and releases.</li>
+								<li>Integrated AI models for features like chatbots and recommendation systems in 3 apps.</li>
 							</ul>
 						</div>
 					</div>
@@ -440,6 +546,7 @@
 								<li>Integrated payment gateways (Stripe, Razorpay) and social logins (Google, Facebook).</li>
 								<li>Contributed to open-source projects, earning 600+ GitHub stars and 20+ merged PRs.</li>
 								<li>Collaborated with cross-functional teams to deliver apps under tight deadlines.</li>
+								<li>Experimented with AI tools for user personalization in e-commerce apps.</li>
 							</ul>
 						</div>
 					</div>
@@ -452,6 +559,7 @@
 								<li>Developed prototype apps using Flutter for internal hackathons.</li>
 								<li>Assisted in building RESTful APIs with Node.js and Express.js.</li>
 								<li>Learned Agile methodologies and version control with Git.</li>
+								<li>Explored AI libraries like TensorFlow Lite for mobile prototypes.</li>
 							</ul>
 						</div>
 					</div>
@@ -494,6 +602,7 @@
 								<li>AWS Certified Developer – Associate</li>
 								<li>Firebase Specialist Certification</li>
 								<li>Blockchain Fundamentals (Coursera)</li>
+								<li>TensorFlow Developer Certificate (Google)</li>
 							</ul>
 						</div>
 					</div>
@@ -599,6 +708,36 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/ai_chatbot.png);"></div>
+							<div class="text"><h3>AI Chatbot App</h3><p>Intelligent conversation app.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>AI Chatbot App</h3>
+							<p>An AI-powered chatbot app using TensorFlow Lite for on-device inference and natural language processing. Integrated with Flutter for cross-platform support.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/dev_tools.png);"></div>
+							<div class="text"><h3>DevTools Dashboard</h3><p>Developer productivity tool.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>DevTools Dashboard</h3>
+							<p>A web-based dashboard for monitoring app performance, built with React.js and integrated with AI analytics tools for predictive insights.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -649,6 +788,21 @@
 						<div class="card-back">
 							<h3>ConnectSphere</h3>
 							<p>A social media app with dynamic feeds, real-time chat, and push notifications. Developed using React Native and Node.js with WebSocket integration.</p>
+							<a href="#" class="btn btn-primary">View Project</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry card-flip">
+					<div class="card-flip-inner">
+						<div class="card-front">
+							<div class="block-20 zoom-effect" style="background-image:url(images/ai_image_recog.png);"></div>
+							<div class="text"><h3>AI Image Recognizer</h3><p>ML-powered image app.</p></div>
+						</div>
+						<div class="card-back">
+							<h3>AI Image Recognizer</h3>
+							<p>A mobile app that uses AI for real-time image recognition, built with Flutter and TensorFlow Lite. Useful for AR experiences and object detection.</p>
 							<a href="#" class="btn btn-primary">View Project</a>
 						</div>
 					</div>
@@ -718,6 +872,15 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="text">
+						<i class="fas fa-brain fa-2x mb-3" style="color: var(--primary-color);"></i>
+						<h3>AI Integration</h3>
+						<p>Integrate machine learning models into apps for features like predictive analytics, chatbots, and image processing using TensorFlow and PyTorch.</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -764,6 +927,28 @@
 					<div class="text">
 						<h3>Getting Started with Web3 Development</h3>
 						<p>A beginner’s guide to building decentralized apps with Ethereum and Solidity.</p>
+						<a href="#" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="block-20 zoom-effect" style="background-image:url(images/ai_mobile.png);"></div>
+					<div class="text">
+						<h3>Integrating AI in Mobile Apps</h3>
+						<p>How to add machine learning features to Flutter and React Native apps using TensorFlow Lite.</p>
+						<a href="#" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="blog-entry">
+					<div class="embed-responsive embed-responsive-16by9 block-20">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9k_yfGvvQ8s" allowfullscreen title="App Development Tutorial"></iframe>
+					</div>
+					<div class="text">
+						<h3>App Development with AI Tools</h3>
+						<p>A video tutorial on using AI-assisted tools for faster app development.</p>
 						<a href="#" class="btn btn-primary">Read More</a>
 					</div>
 				</div>
@@ -824,5 +1009,18 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/main.js"></script>
+<script>
+	document.getElementById('theme-toggle').addEventListener('click', function() {
+		document.body.classList.toggle('light-theme');
+		const icon = this.querySelector('i');
+		if (document.body.classList.contains('light-theme')) {
+			icon.classList.remove('fa-moon');
+			icon.classList.add('fa-sun');
+		} else {
+			icon.classList.remove('fa-sun');
+			icon.classList.add('fa-moon');
+		}
+	});
+</script>
 </body>
 </html>
